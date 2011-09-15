@@ -32,7 +32,7 @@ sub vfw_load_post {
 		** -- http://sourceforge.net/projects/libdynamic/ (Cal Heldenbrand)
 		*/
 
-		char buf[3], body[8192];
+		char buf[4096], body[8192];
 		unsigned long content_length;
 		char *h_clen_ptr, *h_ctype_ptr, shmem_fname[64];
 		int buf_size, rsize, wsize, shmem_htc_fd;
