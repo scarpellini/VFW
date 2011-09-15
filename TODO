@@ -1,0 +1,20 @@
+* HTTP RFC ensuring/enforcement.
+* Generic/"WEB-1" threats:
+--- Dir Traversal;
+---  Internal file extensions (SO, Web, VCS, etc);
+---  Unix/Windows commands;
+---  Bad UA (scanners); 
+* Load HTTP BODY (POST) - Prove Of Concept;
+* Injection:
+--- SQL Injection;
+--- SSI Injection; 
+* XSS;
+* Automated tests;
+* Simple Web Interface (Dashboard);
+* Module for handle HTTP BODY (POST) - VMOD;
+* HTTP BODY VMOD improvements:
+--- Handle content-types (webservices);
+---- XML;
+---- JSON;
+* Dynamic Blacklist (Redis, maybe);
+--- AVScan (passive/bground).
