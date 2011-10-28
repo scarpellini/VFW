@@ -30,11 +30,11 @@ sub vcl_recv {
 
 	# Unix directories
 	# - http://mod-security.svn.sourceforge.net/ (modsecurity_crs_40_generic_attacks.conf)
-	if (req.url ~ "(?i)/(etc|usr|var|tmp|local|bin|sbin|dev|boot|lib(64)?|mnt|root|boot|proc)") {
-		set req.http.X-VFW-Threat = "Unix Directory";
-		set req.http.X-VFW-RuleID = "path.unix-1";
-		call vfw_main;
-	}
+	#if (req.url ~ "(?i)/(etc|usr|var|tmp|local|bin|sbin|dev|boot|lib(64)?|mnt|root|boot|proc)") {
+	#	set req.http.X-VFW-Threat = "Unix Directory";
+	#	set req.http.X-VFW-RuleID = "path.unix-1";
+	#	call vfw_main;
+	#}
 
 	# Unix files
 	# - http://mod-security.svn.sourceforge.net/ (modsecurity_crs_40_generic_attacks.conf)

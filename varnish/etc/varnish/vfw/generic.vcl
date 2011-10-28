@@ -1,3 +1,6 @@
+// todo: block CRLF (+Set-Cookies)
+
+
 sub vcl_recv {
 	# Bad User-Agent - Scanners
 	# - http://mod-security.svn.sourceforge.net/ (modsecurity_35_scanners.data)
@@ -9,7 +12,7 @@ sub vcl_recv {
 
 	# SSI Injection
 	# - http://mod-security.svn.sourceforge.net/ (modsecurity_crs_40_generic_attacks.conf)
-	if (req.url ~ "(?i)<!--.*?#.*?(e(cho|xec)|printenv|include|cmd)") {
+	if (req.url ~ "(?i)(<|%3C|)(\s|%20|\t|%09|\+)*(!|%21)--(\s|%20|\t|%09|\+)*(#|%23)(\s|%20|\t|%09|\+)*(e(cho|xec)|printenv|include|cmd)") {
 		set req.http.X-VFW-Threat = "SSI Injection";
 		set req.http.X-VFW-RuleID = "generic.ssi-1";
 		call vfw_main;
@@ -18,7 +21,7 @@ sub vcl_recv {
 	if (req.http.X-VFW-Body) {
 		# SSI Injection
 		# - http://mod-security.svn.sourceforge.net/ (modsecurity_crs_40_generic_attacks.conf)
-		if (req.http.X-VFW-Body ~ "(?i)<!--.*?#.*?(e(cho|xec)|printenv|include|cmd)") {
+		if (req.http.X-VFW-Body ~ "(?i)(<|%3C|)(\s|%20|\t|%09|\+)*(!|%21)--(\s|%20|\t|%09|\+)*(#|%23)(\s|%20|\t|%09|\+)*(e(cho|xec)|printenv|include|cmd)") {
 			set req.http.X-VFW-Threat = "SSI Injection";
 			set req.http.X-VFW-RuleID = "generic.ssi-2";
 			call vfw_main;

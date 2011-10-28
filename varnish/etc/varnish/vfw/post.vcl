@@ -43,6 +43,7 @@ sub vfw_load_post {
 
 		h_ctype_ptr = VRT_GetHdr(sp, HDR_REQ, "\015Content-Type:");
 
+		// todo: accept ...; charset=*
 		if (strcmp(h_ctype_ptr, "application/x-www-form-urlencoded")) {
 			syslog(LOG_INFO, "vfw_load_post - Not Supported Content-Type: %s", h_ctype_ptr);
 			return(0);

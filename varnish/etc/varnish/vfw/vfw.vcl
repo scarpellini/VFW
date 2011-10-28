@@ -47,6 +47,7 @@ sub vcl_recv {
 	unset req.http.X-VFW-Proto;
 	unset req.http.X-VFW-URL;
 	unset req.http.X-VFW-UA;
+	unset req.http.X-VFW-Static;
 	// vfw_post_cleanup doesn't work if v-vfw-body is unset
 	//unset req.http.X-VFW-Body;
 
